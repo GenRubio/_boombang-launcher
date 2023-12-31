@@ -36,10 +36,12 @@ app.commandLine.appendSwitch(
 );
 
 const createWindow = () => {
+  let height = 687 + 50;
+  let width = 1019 + 315;
   mainWindow = new BrowserWindow({
     autoHideMenuBar: true,
-    width: 1019,
-    height: 687,
+    width: width,
+    height: height,
     icon: iconpath,
     title: "BoomBang Launcher",
     webPreferences: {
@@ -60,35 +62,6 @@ const createWindow = () => {
 
   mainWindow.on("closed", (event) => {
     mainWindow = null;
-  });
-};
-
-const createGameWindow = () => {
-  if (gameWindow !== null) return;
-  gameWindow = new BrowserWindow({
-    autoHideMenuBar: true,
-    width: 1219,
-    height: 887,
-    icon: iconpath,
-    title: "BoomBang Game",
-    webPreferences: {
-      plugins: true,
-      nodeIntegration: true,
-    },
-    show: false,
-    frame: true,
-    backgroundColor: pjson.backgroundColor,
-    resizable: true,
-  });
-  gameWindow.loadURL(launcherUrl);
-  gameWindow.setMenu(null);
-  gameWindow.show();
-
-  gameWindow.toggleDevTools();
-
-  gameWindow.webContents.on("did-finish-load", () => { });
-  gameWindow.on("closed", (event) => {
-    gameWindow = null;
   });
 };
 
@@ -115,8 +88,4 @@ app.on("ready", () => {
   globalShortcut.register("f2", function () {
     session.defaultSession.clearCache();
   });
-});
-
-ipcMain.on('open-window', (event, arg) => {
-  createGameWindow();
 });
