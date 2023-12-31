@@ -7,10 +7,9 @@ const {
 } = require("electron");
 
 const path = require("path");
-const launcherUrl = 'http://localhost:5439/';
+const launcherUrl = 'http://localhost:5439/'; //http://localhost:5439/
 
 let mainWindow;
-let gameWindow = null;
 var iconpath = path.join(__dirname, "icon.ico");
 var pjson = require(__dirname + "/package.json");
 let pluginName;
@@ -43,7 +42,7 @@ const createWindow = () => {
     width: width,
     height: height,
     icon: iconpath,
-    title: "BoomBang Launcher",
+    title: "Yocomania",
     webPreferences: {
       plugins: true,
       nodeIntegration: true,

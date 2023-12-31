@@ -20,6 +20,7 @@
   },
   "build": {
     "appId": "cool-app",
+    "asar": true,
     "win": {
       "target": [
         "nsis"
